@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CyberSecurity &amp; AI Vocabulary Unit 1 Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3F1FA; --paper:#FFFFFF; --ink:#1D1B3A; --muted:#5E5A85; --line:#D6D1EE;
+  --accent:#5B3DF5; --accent-ink:#FFFFFF; --term-bg:#FFF1C2;
+  --good:#0B8A7A; --good-bg:#DDF5F0; --bad:#D63A44; --bad-bg:#FCE3E5;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#14122B; --paper:#1F1C3D; --ink:#ECEAFB; --muted:#A9A5D1; --line:#383369;
+    --accent:#8F7BFF; --accent-ink:#14122B; --term-bg:#3A3213;
+    --good:#4CD6C2; --good-bg:#12362F; --bad:#FF7A82; --bad-bg:#3E1A25;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14122B; --paper:#1F1C3D; --ink:#ECEAFB; --muted:#A9A5D1; --line:#383369;
+  --accent:#8F7BFF; --accent-ink:#14122B; --term-bg:#3A3213;
+  --good:#4CD6C2; --good-bg:#12362F; --bad:#FF7A82; --bad-bg:#3E1A25;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;font-size:1.05rem;line-height:1.5}
+h1,h2,.display{font-family:'Bricolage Grotesque','Atkinson Hyperlegible',system-ui,sans-serif;margin:0}
+.wrap{max-width:780px;margin:0 auto;padding:22px 18px 56px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+/* home */
+.hero h1{font-size:clamp(1.9rem,6vw,2.9rem);font-weight:800;line-height:1.02;letter-spacing:-.02em}
+.hero p{margin:12px 0 0;color:var(--muted);max-width:56ch}
+.label{font-weight:700;margin:30px 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 14px;border-radius:999px;border:2px solid var(--line);background:var(--paper);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:700}
+.count{color:var(--muted);margin:10px 0 0;font-size:.95rem}
+.modes{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px}
+@media(min-width:640px){.modes{grid-template-columns:1fr 1fr}}
+.mode{text-align:left;padding:18px 18px 16px;border-radius:18px;background:var(--paper);border:2px solid var(--line);border-bottom-width:7px;cursor:pointer}
+.mode h2{font-size:1.4rem;font-weight:800}
+.mode p{margin:6px 0 0;color:var(--muted);font-size:.98rem}
+.mode:hover:not(:disabled){border-color:var(--accent)}
+.mode:active:not(:disabled){transform:translateY(3px);border-bottom-width:4px}
+.mode:disabled{opacity:.5;cursor:not-allowed}
+
+/* bars + buttons */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.stats{display:flex;gap:8px;flex-wrap:wrap}
+.pill{padding:4px 12px;border-radius:999px;background:var(--paper);border:2px solid var(--line);font-weight:700;font-size:.95rem}
+.btn{font-weight:700;padding:12px 20px;border-radius:12px;border:2px solid var(--accent);border-bottom-width:5px;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn:active{transform:translateY(2px);border-bottom-width:3px}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.small{padding:6px 14px;border-bottom-width:4px;font-size:.95rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.progress{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.progress span{display:block;height:100%;background:var(--accent);transition:width .3s}
+
+/* quiz */
+.qcard{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:22px;margin:18px 0}
+.qkind{margin:0 0 8px;color:var(--muted);font-size:.95rem}
+.prompt{margin:0;font-size:clamp(1.15rem,3.4vw,1.45rem);line-height:1.4;font-weight:600;font-family:'Bricolage Grotesque','Atkinson Hyperlegible',system-ui,sans-serif}
+.keys{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:640px){.keys{grid-template-columns:1fr 1fr}}
+.key{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 16px;background:var(--paper);border:2px solid var(--line);border-bottom-width:7px;border-radius:14px;font-weight:700;cursor:pointer;transition:transform .08s}
+.key:hover:not(:disabled){border-color:var(--accent)}
+.key:active:not(:disabled){transform:translateY(4px);border-bottom-width:3px}
+.key .cap{flex:none;width:32px;height:32px;border-radius:8px;background:var(--bg);border:2px solid var(--line);display:grid;place-items:center;font-size:.95rem}
+.key:disabled{cursor:default}
+.key.good{background:var(--good-bg);border-color:var(--good)}
+.key.bad{background:var(--bad-bg);border-color:var(--bad)}
+.feedback{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--paper);border:2px solid var(--line);border-left-width:8px}
+.feedback.good{background:var(--good-bg);border-color:var(--good)}
+.feedback.bad{background:var(--bad-bg);border-color:var(--bad)}
+.feedback p{margin:0 0 4px}
+.hint{color:var(--muted);font-size:.9rem;margin:14px 0 0}
+
+/* results */
+.big{font-size:clamp(2.4rem,9vw,4rem);font-weight:800;line-height:1}
+.resultcard{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:22px;margin-top:14px}
+.review{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:10px}
+.review li{padding:10px 14px;border-left:6px solid var(--bad);background:var(--bad-bg);border-radius:10px}
+
+/* match */
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+@media(min-width:640px){.tiles{grid-template-columns:repeat(3,1fr)}}
+.tile{min-height:96px;padding:10px 12px;border-radius:14px;border:2px solid var(--line);border-bottom-width:6px;background:var(--paper);cursor:pointer;text-align:left;font-size:.92rem;line-height:1.35}
+.tile.term{background:var(--term-bg);font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;text-align:center;font-family:'Bricolage Grotesque','Atkinson Hyperlegible',system-ui,sans-serif}
+.tile.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent)}
+.tile.done{background:var(--good-bg);border-color:var(--good);opacity:.55;cursor:default}
+.tile.wrong{background:var(--bad-bg);border-color:var(--bad);animation:shake .4s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* flashcards */
+.card{display:grid;place-items:center;width:100%;min-height:270px;padding:28px;margin-top:16px;border-radius:22px;border:2px solid var(--line);border-bottom-width:9px;background:var(--paper);cursor:pointer;text-align:center}
+.card.back{background:var(--term-bg)}
+.card .big{font-size:clamp(2rem,8vw,3rem)}
+.card .def{font-size:clamp(1.1rem,3.4vw,1.35rem);line-height:1.45;font-weight:600}
+.card .tag{display:block;margin-top:14px;color:var(--muted);font-size:.9rem}
+.card .tap{display:block;margin-top:14px;color:var(--muted);font-size:.9rem}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ---------- DATA ---------- */
+const SETS = [
+  {id:'code', label:'Code.org Lessons 1–8', short:'Code.org'},
+  {id:'c11',  label:'Cyber.org 1.1 CIA Triad & Authentication', short:'Cyber.org 1.1'},
+  {id:'c12',  label:'Cyber.org 1.2 Identifying Threats', short:'Cyber.org 1.2'},
+  {id:'c13',  label:'Cyber.org 1.3 Intro to Command Line', short:'Cyber.org 1.3'}
+];
+
+const T = [
+  /* Code.org Lessons 1-8 */
+  ['Cybersecurity',"The practice of protecting computers, networks, and personal data from being stolen, changed, or damaged.",['code','c11']],
+  ['Malware',"Software intended to damage a computing system or to take partial control over its operation.",['code','c12']],
+  ['Threat',"Any potential cause of harm to a computer system or network.",['code']],
+  ['Vulnerability',"A weakness in a system that could be exploited by an attacker.",['code']],
+  ['Phishing',"A technique that attempts to trick a user into providing personal information that can then be used to access sensitive online resources, such as bank accounts and emails.",['code']],
+  ['Attack',"A malicious activity aimed at disrupting, damaging, destroying, or gaining unauthorized access to information systems, networks, or the data they contain.",['code']],
+  ['Deepfake',"A video or audio that has been manipulated using AI to look or sound like a real person.",['code']],
+  ['Smishing',"A type of phishing that happens over text message (SMS).",['code']],
+  ['Social engineering',"Manipulating people into giving up private information or doing something risky.",['code']],
+  ['Vishing',"A type of phishing that happens over phone call or voicemail.",['code']],
+  ['CIA Triad',"A set of core rules for protecting information. It stands for Confidentiality, Integrity, and Availability.",['code','c11']],
+  ['Availability',"Making information accessible to the people who need it, when they need it.",['code','c11']],
+  ['Confidentiality',"Keeping information private so only the right people can see it.",['code','c11']],
+  ['Integrity',"Ensuring that information stays correct and hasn’t been changed without permission.",['code','c11']],
+  ['AAA tools',"A set of tools used in cybersecurity to help systems protect information and manage what users can do.",['code']],
+  ['Accounting',"When a system keeps track of what users do so suspicious activity can be detected and reviewed.",['code','c11']],
+  ['Authentication',"The process a system uses to check that you are who you say you are.",['code','c11']],
+  ['Authorization',"Rules a system uses to decide what you’re allowed to do once you’re logged in.",['code']],
+
+  /* Cyber.org 1.1 */
+  ['Access Control',"Rules and tools that decide who can use or see which resources in a system.",['c11']],
+  ['Password',"A secret string of characters you use to prove your identity.",['c11']],
+  ['Single Sign-On (SSO)',"Logging in once to get access to several apps or services without signing in again for each one.",['c11']],
+  ['Breach',"An incident where attackers get into a system and see or steal data they should not have.",['c11']],
+  ['Database',"An organized collection of data stored so it can be searched and updated easily.",['c11']],
+  ['Dictionary Attack',"Guessing passwords by trying words from a list of common words and passwords.",['c11']],
+  ['Brute force attack',"Guessing a password by trying every possible combination until one works.",['c11']],
+  ['Hybrid Attack',"Guessing passwords by combining dictionary words with changes like added numbers or symbols.",['c11']],
+  ['Password Spraying',"Trying a few very common passwords against many different accounts to avoid getting locked out.",['c11']],
+  ['Credentials',"The information, like a username and password, used to prove who you are.",['c11']],
+  ['Credential Stuffing',"Using stolen username and password pairs from one breach to try to log in to other sites.",['c11']],
+  ['Identity Proofing',"Verifying that a person really is who they claim to be before giving them an account, such as by checking an ID.",['c11']],
+  ['Passphrase',"A long password made of several words, which is easier to remember and harder to crack.",['c11']],
+  ['Hashing',"Turning data into a fixed-length scrambled value that can’t be reversed. It’s used to store passwords safely and check integrity.",['c11']],
+  ['Rainbow Tables',"Huge precomputed lists of hashes and their matching passwords, used to crack hashed passwords quickly.",['c11']],
+  ['Hash collision',"When two different inputs produce the same hash value.",['c11']],
+  ['Birthday Attack',"An attack that uses probability to find two inputs with the same hash much faster than you’d expect.",['c11']],
+  ['Smart Cards',"Plastic cards with a built-in chip that stores credentials, used as “something you have” to prove identity.",['c11']],
+  ['Certificate',"A digital document that proves the identity of a person, device, or website, issued by a trusted source.",['c11']],
+  ['Algorithm',"A step-by-step set of instructions for solving a problem or completing a task.",['c11']],
+  ['Biometrics',"Using body traits, like fingerprints, face, or voice, to verify identity.",['c11']],
+
+  /* Cyber.org 1.2 */
+  ['Virus',"Malware that attaches to a file or program and spreads when a person opens or runs it.",['c12']],
+  ['Worm',"Malware that spreads from computer to computer on its own, without anyone opening or clicking anything.",['c12']],
+  ['Replicates',"Makes copies of itself.",['c12']],
+  ['Trojan',"Malware disguised as a useful or harmless program.",['c12']],
+  ['RAT (Remote Access Trojan)',"Malware that lets an attacker secretly control your computer from far away.",['c12']],
+  ['Backdoor',"A hidden way into a system that skips the normal login.",['c12']],
+  ['Botnet',"A network of infected computers that an attacker controls and uses together.",['c12']],
+  ['Logic Bomb',"Malicious code that stays hidden until a certain date or condition triggers it.",['c12']],
+  ['Rootkit',"Malware that buries itself deep in a system to keep high-level access and avoid being detected.",['c12']],
+  ['Zero Day',"A flaw, or an attack using it, that the software maker doesn’t know about yet, so no fix exists.",['c12']],
+  ['Vulnerability Window',"The time between when a weakness can be exploited and when it gets patched.",['c12']],
+  ['APT (Advanced Persistent Threat)',"A long-term, stealthy attack by a skilled group that stays hidden inside a network.",['c12']],
+  ['Exfiltrate',"To secretly steal data and send it out of a network.",['c12']],
+  ['Ransomware',"Malware that locks or encrypts your files and demands payment to unlock them.",['c12']],
+  ['Spyware',"Malware that secretly watches what you do and sends the information to an attacker.",['c12']],
+  ['Adware',"Software that shows you unwanted ads, and sometimes tracks what you do.",['c12']],
+  ['PUP / PUA',"A “potentially unwanted” program or application, often bundled with free downloads, that you probably didn’t mean to install.",['c12']],
+  ['SPAM',"Unwanted messages sent in bulk, usually by email.",['c12']],
+
+  /* Cyber.org 1.3 */
+  ['Virtualization',"Using software to create a simulated version of a computer or its resources.",['c13']],
+  ['Hypervisor',"Software that creates and runs virtual machines.",['c13']],
+  ['Host',"The physical computer that runs virtual machines.",['c13']],
+  ['Host OS',"The operating system installed on the physical computer that runs the virtual machines.",['c13']],
+  ['Virtual Machine',"A software-based computer that runs inside another computer and has its own operating system.",['c13']],
+  ['Virtualization software',"A program, such as VirtualBox or VMware, used to create and manage virtual machines.",['c13']],
+  ['Command Line',"A text-based way to control a computer by typing commands.",['c13']],
+  ['GUI (Graphical User Interface)',"A way to use a computer with windows, icons, menus, and a mouse.",['c13']],
+  ['Linux',"A free, open-source operating system widely used on servers and for security tools.",['c13']],
+  ['Specialized operating system',"An operating system built for one particular job, such as security testing.",['c13']],
+  ['Terminal',"The program or window where you type command line commands.",['c13']],
+  ['Prompt',"The text in the terminal that shows the system is ready for your next command.",['c13']],
+  ['Path',"The location of a file or folder in a computer’s file system.",['c13']]
+].map(([t,d,s]) => ({t,d,s}));
+
+const S = [
+  {t:'Smishing', q:"A text message says: “Your bank account is locked. Tap this link to verify.”", d:['Vishing','Ransomware','Worm'], why:"Phishing by text message is smishing."},
+  {t:'Vishing', q:"A voicemail claims to be from the IRS and demands you call back and pay with gift cards.", d:['Smishing','Spyware','Backdoor'], why:"Phishing by phone call or voicemail is vishing."},
+  {t:'Phishing', q:"An email that looks like it’s from school IT sends you to a fake login page to “reset your password.”", d:['Ransomware','Botnet','Rootkit'], why:"It tricks you into handing over your login information."},
+  {t:'Deepfake', q:"A video shows your principal announcing a snow day, but she never recorded it. AI created it.", d:['Spyware','Logic Bomb','Hybrid Attack'], why:"AI-manipulated video or audio of a real person is a deepfake."},
+  {t:'Ransomware', q:"Every file on the school computer is locked, and a message demands payment to unlock them.", d:['Spyware','Adware','Worm'], why:"Locking files and demanding payment is ransomware."},
+  {t:'Trojan', q:"A “free homework helper” app seems useful, but secretly installs malicious code.", d:['Worm','Rootkit','Adware'], why:"Malware disguised as something useful is a Trojan."},
+  {t:'RAT (Remote Access Trojan)', q:"Someone far away is moving your mouse and watching your screen without your permission.", d:['Worm','Adware','Logic Bomb'], why:"A RAT gives an attacker remote control of your computer."},
+  {t:'Worm', q:"Malware jumps from computer to computer across the school network by itself. Nobody clicked anything.", d:['Virus','Trojan','Spyware'], why:"A worm spreads on its own. A virus needs a person to open or run something."},
+  {t:'Virus', q:"Malware is hidden inside a file attachment and only spreads when someone opens that file.", d:['Worm','Botnet','Adware'], why:"A virus attaches to a file and needs a person to run it."},
+  {t:'Password Spraying', q:"An attacker tries “Password123” on 500 different accounts instead of trying many passwords on one account.", d:['Brute force attack','Dictionary Attack','Credential Stuffing'], why:"A few common passwords across many accounts is password spraying."},
+  {t:'Credential Stuffing', q:"Passwords leaked from a gaming site are used to log in to students’ email accounts.", d:['Password Spraying','Dictionary Attack','Brute force attack'], why:"Reusing stolen username and password pairs on other sites is credential stuffing."},
+  {t:'Brute force attack', q:"A program tries every possible combination of characters until the lock opens.", d:['Dictionary Attack','Password Spraying','Hybrid Attack'], why:"Trying every combination is brute force."},
+  {t:'Biometrics', q:"Your phone unlocks when it recognizes your face.", d:['Smart Cards','Passphrase','Single Sign-On (SSO)'], why:"Body traits like your face or fingerprint are biometrics."},
+  {t:'Logic Bomb', q:"Hidden code sits quietly in a company’s system and deletes files the day a certain employee is fired.", d:['Rootkit','Adware','Worm'], why:"Code that waits for a trigger condition is a logic bomb."},
+  {t:'Availability', q:"A hospital’s computers are knocked offline, so doctors can’t open patient records when they need them.", d:['Confidentiality','Integrity','Authentication'], why:"Information must be accessible when people need it."},
+  {t:'Integrity', q:"Someone secretly changes a student’s grade in the database.", d:['Confidentiality','Availability','Accounting'], why:"The information is no longer correct, so integrity was broken."},
+  {t:'Confidentiality', q:"A stranger reads private messages that were meant only for you.", d:['Integrity','Availability','Authorization'], why:"Private information was seen by the wrong person."},
+  {t:'Accounting', q:"A log records who signed in at 2 a.m. and exactly what they did.", d:['Authentication','Authorization','Access Control'], why:"Tracking what users do is accounting."},
+  {t:'Authentication', q:"A system asks for your username and password to confirm who you are.", d:['Authorization','Accounting','Confidentiality'], why:"Checking that you are who you say you are is authentication."},
+  {t:'Authorization', q:"You’re logged in, but the system won’t let you open the teacher gradebook.", d:['Authentication','Accounting','Integrity'], why:"Authorization decides what you’re allowed to do once you’re logged in."},
+  {t:'Zero Day', q:"Attackers use a flaw the software maker doesn’t even know about yet, so no fix exists.", d:['Backdoor','Logic Bomb','Vulnerability Window'], why:"A flaw with no fix available yet is a zero day."},
+  {t:'Spyware', q:"A program secretly records every key you type and sends it to someone else.", d:['Adware','Ransomware','Worm'], why:"Secretly watching and reporting your activity is spyware."},
+  {t:'Adware', q:"After you install a free program, pop-up ads show up constantly.", d:['Spyware','Ransomware','Rootkit'], why:"Software that pushes unwanted ads is adware."},
+  {t:'Botnet', q:"Thousands of hijacked computers are controlled by one attacker and used together.", d:['Worm','Virus','APT (Advanced Persistent Threat)'], why:"A network of infected computers under one attacker’s control is a botnet."},
+  {t:'Virtual Machine', q:"You run a whole Linux computer inside a window on a Windows laptop.", d:['Hypervisor','Host','Terminal'], why:"A computer that runs inside another computer is a virtual machine."},
+  {t:'Command Line', q:"You’re typing text instructions to move around folders instead of clicking icons.", d:['GUI (Graphical User Interface)','Linux','Path'], why:"Controlling a computer by typing commands is the command line."},
+  {t:'Exfiltrate', q:"Attackers quietly copy customer data out of a network to a server they control.", d:['Ransomware','Logic Bomb','Hashing'], why:"Secretly sending stolen data out of a network is exfiltration."},
+  {t:'Social engineering', q:"A caller pretends to be tech support and talks an employee into sharing their password.", d:['Brute force attack','Ransomware','Zero Day'], why:"It works by manipulating a person, not by breaking technology."}
+];
+
+/* ---------- HELPERS ---------- */
+const app = document.getElementById('app');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const state = { sel: new Set(SETS.map(s => s.id)), bestMatch: null };
+let screen = 'home';
+let timer = null;
+
+const pool = () => T.filter(x => x.s.some(id => state.sel.has(id)));
+const scenarioPool = () => S.filter(x => { const term = T.find(y => y.t === x.t); return term && term.s.some(id => state.sel.has(id)); });
+const stopTimer = () => { if (timer) { clearInterval(timer); timer = null; } };
+const fmt = sec => Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0');
+
+/* ---------- HOME ---------- */
+function home() {
+  stopTimer(); screen = 'home';
+  const p = pool(), sp = scenarioPool();
+  app.innerHTML = `
+    <section class="hero">
+      <h1>CyberSecurity &amp; AI Vocabulary Unit 1 Review</h1>
+      <p>Practice the terms from Code.org Lessons 1–8 and Cyber.org Unit 1. Pick what to include, then pick a game.</p>
+    </section>
+    <p class="label" id="setlabel">What should we practice?</p>
+    <div class="chips" role="group" aria-labelledby="setlabel">
+      ${SETS.map(s => `<button class="chip" data-set="${s.id}" aria-pressed="${state.sel.has(s.id)}">${esc(s.label)}</button>`).join('')}
+    </div>
+    <p class="count">${p.length} terms and ${sp.length} case files in play</p>
+    <div class="modes">
+      <button class="mode" data-mode="quiz" ${p.length < 4 ? 'disabled' : ''}><h2>Vocab quiz</h2><p>Read a definition, pick the matching term. 10 questions.</p></button>
+      <button class="mode" data-mode="cases" ${sp.length < 3 ? 'disabled' : ''}><h2>Case files</h2><p>Short real-world scenarios. Name the threat or concept.</p></button>
+      <button class="mode" data-mode="match" ${p.length < 4 ? 'disabled' : ''}><h2>Match rush</h2><p>Pair terms with their definitions as fast as you can.</p></button>
+      <button class="mode" data-mode="flash" ${p.length < 1 ? 'disabled' : ''}><h2>Flashcards</h2><p>Flip each card, then sort it into Got it or Still learning.</p></button>
+    </div>`;
+  app.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+    const id = b.dataset.set;
+    if (state.sel.has(id)) { if (state.sel.size > 1) state.sel.delete(id); } else state.sel.add(id);
+    home();
+  });
+  app.querySelectorAll('.mode').forEach(b => b.onclick = () => startMode(b.dataset.mode));
+}
+
+function startMode(m) {
+  if (m === 'quiz') startVocabQuiz();
+  else if (m === 'cases') startCases();
+  else if (m === 'match') startMatch();
+  else startFlash();
+}
+
+/* ---------- QUIZ ENGINE ---------- */
+let Q = null;
+
+function startVocabQuiz() {
+  const p = pool(), all = shuffle(p).slice(0, 10);
+  const qs = all.map(term => {
+    let wrong = shuffle(p.filter(x => x.t !== term.t));
+    if (wrong.length < 3) wrong = wrong.concat(shuffle(T.filter(x => x.t !== term.t && !wrong.includes(x))));
+    wrong = wrong.slice(0, 3);
+    return { kind: 'Which term matches this definition?', prompt: term.d, options: shuffle([term.t, ...wrong.map(w => w.t)]), answer: term.t, review: term.t + ': ' + term.d, why: '' };
+  });
+  runQuiz('quiz', qs);
+}
+
+function startCases() {
+  const qs = shuffle(scenarioPool()).slice(0, 10).map(s => ({
+    kind: 'Case file: what is going on here?', prompt: s.q, options: shuffle([s.t, ...s.d]), answer: s.t, review: s.t + ': ' + s.why, why: s.why
+  }));
+  runQuiz('cases', qs);
+}
+
+function runQuiz(mode, qs) {
+  Q = { mode, qs, i: 0, score: 0, streak: 0, best: 0, right: 0, missed: [], answered: false };
+  showQ();
+}
+
+function showQ() {
+  screen = 'quiz'; Q.answered = false;
+  const q = Q.qs[Q.i];
+  app.innerHTML = `
+    <div class="bar">
+      <button class="btn ghost small" id="quit">Home</button>
+      <div class="stats">
+        <span class="pill">Question ${Q.i + 1} of ${Q.qs.length}</span>
+        <span class="pill" id="score">Score ${Q.score}</span>
+        <span class="pill" id="streak">Streak ${Q.streak}</span>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><span style="width:${(Q.i / Q.qs.length) * 100}%"></span></div>
+    <section class="qcard">
+      <p class="qkind">${esc(q.kind)}</p>
+      <p class="prompt">${esc(q.prompt)}</p>
+    </section>
+    <div class="keys">
+      ${q.options.map((o, i) => `<button class="key" data-i="${i}"><span class="cap">${i + 1}</span><span>${esc(o)}</span></button>`).join('')}
+    </div>
+    <div class="feedback-slot" aria-live="polite"></div>
+    <p class="hint">Tip: press 1–4 to answer.</p>`;
+  document.getElementById('quit').onclick = home;
+  app.querySelectorAll('.key').forEach(b => b.onclick = () => answer(+b.dataset.i));
+}
+
+function answer(idx) {
+  if (screen !== 'quiz' || Q.answered) return;
+  const q = Q.qs[Q.i];
+  if (idx < 0 || idx >= q.options.length) return;
+  Q.answered = true;
+  const ok = q.options[idx] === q.answer;
+  app.querySelectorAll('.key').forEach((b, i) => {
+    b.disabled = true;
+    if (q.options[i] === q.answer) b.classList.add('good');
+    else if (i === idx) b.classList.add('bad');
+  });
+  if (ok) { Q.streak++; Q.best = Math.max(Q.best, Q.streak); Q.right++; Q.score += 100 + 25 * Math.min(Q.streak - 1, 4); }
+  else { Q.streak = 0; Q.missed.push(q); }
+  document.getElementById('score').textContent = 'Score ' + Q.score;
+  document.getElementById('streak').textContent = 'Streak ' + Q.streak;
+  const last = Q.i + 1 >= Q.qs.length;
+  const head = ok ? '<strong>Correct.</strong>' : `<strong>Not quite.</strong> The answer is <strong>${esc(q.answer)}</strong>.`;
+  document.querySelector('.feedback-slot').innerHTML = `
+    <div class="feedback ${ok ? 'good' : 'bad'}">
+      <p>${head}</p>${q.why ? `<p>${esc(q.why)}</p>` : ''}
+    </div>
+    <div class="actions"><button class="btn" id="next">${last ? 'See results' : 'Next question'}</button></div>`;
+  const next = document.getElementById('next');
+  next.onclick = nextQ; next.focus();
+}
+
+function nextQ() {
+  if (Q.i + 1 < Q.qs.length) { Q.i++; showQ(); } else quizResults();
+}
+
+function quizResults() {
+  screen = 'results';
+  const pct = Math.round((Q.right / Q.qs.length) * 100);
+  const msg = pct >= 90 ? 'Security expert. Nothing got past you.' : pct >= 70 ? 'Solid defense. A few terms to tighten up.' : pct >= 50 ? 'Getting there. Review the misses below and try again.' : 'Good start. Review the terms below, then play again.';
+  app.innerHTML = `
+    <h1 class="big">${Q.score} pts</h1>
+    <p>${Q.right} of ${Q.qs.length} correct (${pct}%). Best streak: ${Q.best}.</p>
+    <p>${msg}</p>
+    ${Q.missed.length ? `<div class="resultcard"><h2>Review these</h2><ul class="review">${Q.missed.map(m => `<li>${esc(m.review)}</li>`).join('')}</ul></div>` : ''}
+    <div class="actions">
+      <button class="btn" id="again">Play again</button>
+      ${Q.missed.length ? '<button class="btn ghost" id="redo">Practice missed</button>' : ''}
+      <button class="btn ghost" id="home">Home</button>
+    </div>`;
+  const mode = Q.mode, missed = Q.missed;
+  document.getElementById('again').onclick = () => startMode(mode);
+  const redo = document.getElementById('redo');
+  if (redo) redo.onclick = () => runQuiz(mode, shuffle(missed).map(m => ({ ...m, options: shuffle(m.options) })));
+  document.getElementById('home').onclick = home;
+}
+
+/* ---------- MATCH RUSH ---------- */
+let M = null;
+
+function startMatch() {
+  stopTimer();
+  const p = shuffle(pool()).slice(0, 6);
+  const tiles = shuffle(p.flatMap(x => [{ id: x.t, type: 'term', text: x.t }, { id: x.t, type: 'def', text: x.d }]));
+  M = { tiles, sel: null, found: 0, pairs: p.length, miss: 0, start: null, lock: false };
+  screen = 'match';
+  app.innerHTML = `
+    <div class="bar">
+      <button class="btn ghost small" id="quit">Home</button>
+      <div class="stats">
+        <span class="pill" id="time">0:00</span>
+        <span class="pill" id="found">0 of ${M.pairs} matched</span>
+        <span class="pill" id="miss">Misses 0</span>
+      </div>
+    </div>
+    <p class="count">Tap a term, then tap its definition. The timer starts on your first tap.</p>
+    <div class="tiles">
+      ${tiles.map((t, i) => `<button class="tile ${t.type}" data-i="${i}">${esc(t.text)}</button>`).join('')}
+    </div>`;
+  document.getElementById('quit').onclick = home;
+  const els = [...app.querySelectorAll('.tile')];
+  els.forEach((el, i) => el.onclick = () => tapTile(i, els));
+}
+
+function tapTile(i, els) {
+  if (M.lock) return;
+  const t = M.tiles[i], el = els[i];
+  if (el.classList.contains('done')) return;
+  if (!M.start) {
+    M.start = Date.now();
+    timer = setInterval(() => { const n = document.getElementById('time'); if (n) n.textContent = fmt(Math.floor((Date.now() - M.start) / 1000)); }, 250);
+  }
+  if (M.sel === null) { M.sel = i; el.classList.add('sel'); return; }
+  if (M.sel === i) { el.classList.remove('sel'); M.sel = null; return; }
+  const prev = M.tiles[M.sel];
+  if (prev.type === t.type) { els[M.sel].classList.remove('sel'); M.sel = i; el.classList.add('sel'); return; }
+  const a = els[M.sel], b = el;
+  if (prev.id === t.id) {
+    [a, b].forEach(x => { x.classList.remove('sel'); x.classList.add('done'); x.disabled = true; });
+    M.sel = null; M.found++;
+    document.getElementById('found').textContent = M.found + ' of ' + M.pairs + ' matched';
+    if (M.found === M.pairs) matchDone();
+  } else {
+    M.miss++; M.lock = true;
+    document.getElementById('miss').textContent = 'Misses ' + M.miss;
+    [a, b].forEach(x => { x.classList.remove('sel'); x.classList.add('wrong'); });
+    setTimeout(() => { [a, b].forEach(x => x.classList.remove('wrong')); M.sel = null; M.lock = false; }, 600);
+  }
+}
+
+function matchDone() {
+  stopTimer();
+  const secs = Math.floor((Date.now() - M.start) / 1000);
+  const record = state.bestMatch === null || secs < state.bestMatch;
+  if (record) state.bestMatch = secs;
+  screen = 'results';
+  const misses = M.miss;
+  setTimeout(() => {
+    app.innerHTML = `
+      <h1 class="big">${fmt(secs)}</h1>
+      <p>${M.pairs} pairs matched with ${misses} ${misses === 1 ? 'miss' : 'misses'}.</p>
+      <p>${record ? 'New best time for this session.' : 'Best time this session: ' + fmt(state.bestMatch) + '.'}</p>
+      <div class="actions">
+        <button class="btn" id="again">New round</button>
+        <button class="btn ghost" id="home">Home</button>
+      </div>`;
+    document.getElementById('again').onclick = startMatch;
+    document.getElementById('home').onclick = home;
+  }, 500);
+}
+
+/* ---------- FLASHCARDS ---------- */
+let F = null;
+
+function startFlash() {
+  const deck = shuffle(pool());
+  F = { deck, total: deck.length, known: 0, flipped: false };
+  showCard();
+}
+
+function tagsFor(term) { return SETS.filter(s => term.s.includes(s.id)).map(s => s.short).join(', '); }
+
+function showCard() {
+  screen = 'flash';
+  if (!F.deck.length) return flashDone();
+  F.flipped = false;
+  const c = F.deck[0];
+  app.innerHTML = `
+    <div class="bar">
+      <button class="btn ghost small" id="quit">Home</button>
+      <div class="stats">
+        <span class="pill">Got it ${F.known} of ${F.total}</span>
+        <span class="pill">${F.deck.length} left</span>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><span style="width:${(F.known / F.total) * 100}%"></span></div>
+    <button class="card" id="card" aria-label="Flashcard. Press to flip."></button>
+    <div class="actions">
+      <button class="btn ghost" id="again">Still learning</button>
+      <button class="btn" id="got">Got it</button>
+    </div>
+    <p class="hint">Keys: Space flips the card. Left arrow is Still learning. Right arrow is Got it.</p>`;
+  drawCard();
+  document.getElementById('quit').onclick = home;
+  document.getElementById('card').onclick = flip;
+  document.getElementById('again').onclick = flashAgain;
+  document.getElementById('got').onclick = flashGot;
+}
+
+function drawCard() {
+  const c = F.deck[0], el = document.getElementById('card');
+  if (!el) return;
+  el.classList.toggle('back', F.flipped);
+  el.innerHTML = F.flipped
+    ? `<span><span class="def">${esc(c.d)}</span><span class="tag">${esc(c.t)} (${esc(tagsFor(c))})</span></span>`
+    : `<span><span class="big display">${esc(c.t)}</span><span class="tap">Tap to see the definition</span></span>`;
+}
+function flip() { F.flipped = !F.flipped; drawCard(); }
+function flashAgain() { F.deck.push(F.deck.shift()); showCard(); }
+function flashGot() { F.deck.shift(); F.known++; showCard(); }
+
+function flashDone() {
+  screen = 'results';
+  app.innerHTML = `
+    <h1 class="big">Deck complete</h1>
+    <p>You sorted all ${F.total} cards into Got it.</p>
+    <div class="actions">
+      <button class="btn" id="again">Shuffle and go again</button>
+      <button class="btn ghost" id="home">Home</button>
+    </div>`;
+  document.getElementById('again').onclick = startFlash;
+  document.getElementById('home').onclick = home;
+}
+
+/* ---------- KEYBOARD ---------- */
+document.addEventListener('keydown', e => {
+  const onButton = e.target && e.target.tagName === 'BUTTON';
+  if (screen === 'quiz') {
+    if (['1', '2', '3', '4'].includes(e.key)) answer(+e.key - 1);
+    else if (Q.answered && !onButton && (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight')) { e.preventDefault(); nextQ(); }
+  } else if (screen === 'flash' && F && F.deck.length) {
+    if (e.key === 'ArrowLeft') flashAgain();
+    else if (e.key === 'ArrowRight') flashGot();
+    else if ((e.key === ' ' || e.key === 'Enter') && !onButton) { e.preventDefault(); flip(); }
+  }
+});
+
+home();
+</script>
+</body>
+</html>
